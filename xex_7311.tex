@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+	
+	Suppose $M$ c.t.m. of ZFC, $M \models k \geq 2^{\omega} \land k \in  \text{Reg}$. Let $P := (P_k)^M, B := RO(P)^M$. Then $ \forall G \text{ generic } \omega_1 ^M = \omega_1 ^{M[G]}$.
+	
+\end{exercise}
+
+\begin{proof}
+
+	By contradiction, assume that for some $G$ generic we have $M[G] \models \omega_1 > (\omega_1)^M$. This means that there exists in $M[G]$ some $r$ such that $M[G] \models r: \omega_1 ^M \to \omega \text{ injective }$.
+	Let $\dot{r}$ be a name for $r$. Then $[[ \dot{r}: \check{\omega_1 ^M} \to \check{\omega} ]] = b \in G$. 
+	Now consider for every $n \in \omega$ $D_n := \{ q \leq b : M \models \exists n<\omega [[ \dot{r}(\check{n}) = \check{m} ]] \geq q \}$.
+	We claim that $\forall n<\omega D_n$ is open, dense under $b$. It is obvious that it is open, since it is downward closed by definition.
+	We need to check the density: let $0 < c \leq b$. Let $H$ be generic, with $c \in H$. Then $b \in H$, so that $M[H] \models \dot{r}_H : \check{\omega_1 ^M}_H \to \omega \text{ injection }$.
+	In particular, for some $m < \omega$, it must be $M[H] \models \dot{r}_H (n) = m$. Equivalently $[[ \dot{r} (\check{n}) = \check{m} ]] \in H$. Then $[[ \dot{r} (\check{n}) = \check{m} ]] \wedge c \in H \cap D_n $.
+	Now, since $P$ is $\omega$-complete,distributive we get that $B$ is $\omega$-distributive. This means in particular that $D_{\dot{r}} := \bigcap_{n<\omega} D_n$ is open, dense under $b$.
+	Since $G$ is generic, $b \in G$ and $D_{\dot{r}}$ is a dense of $M$, we get that $G \cap D_{\dot{r}} \not = \emptyset $.
+	So let $q \in G \cap D_{\dot{r}}$. We claim $q \Vdash [[ \dot{r} = s ]]$ for some $s \in M$. 
+	In fact, consider $ s := \{ \langle n,m \rangle : q \Vdash [[ \dot{r}(\check{n}) = \check{m}]]\}$.
+	Let $H$ generic with $q \in H$. Then $M[G] \models \dot{r}_H (n) = m = \check{s}_H (n)$. Since this holds for every $n$ we get that $M[H] \models \dot{r}_H = \check{s}_H$. 
+	Since $H$ arbitrary we also get $q \Vdash [[ \dot{r} = \check{s} ]]$. Since $q \in G$ we finally have $M[G] \models \dot{r}_G = s$. But this means that the function witnessing $|\omega_1 ^M| = \omega $ already existed in $M$, a contradiction. 
+
+\end{proof}
+\end{document}
