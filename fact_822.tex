@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Check that the following are expressible as $\Delta_0$-formulae.
+
+\end{exercise}
+
+\begin{proof}
+
+	\begin{itemize}
+		\item	$x \subseteq y$: $\forall z \in x (z \in y)$
+		\item	$x = \{y,z\}$: $\forall t \in x (t = y \lor t = z) \land \exists t \in x (t = y) \land \exists t in x (t = z)$ 
+		\item	$x = (y,z)$: $\forall t \in x (t = \{y\} \lor t = \{y,z\}) \land \exists t \in x (t = \{y\}) \land \exists t \in x (t = \{y,z\})$
+		\item	$x = \bigcup y$: $\forall t \in x \exists z \in y (t \in z) \land \forall z \in y \forall t \in z (t \in x)$
+		\item	$x = \bigcap y$: $\forall t \in x \exists r \in y (t \in r) \land \forall t \in y \forall z \in t (z \in x)$
+		\item	$x = y \setminus z$: $\forall t \in x (t \in x \land t \not \in z) \land \forall t \in y (t \not \in z \to t \in x)$
+		\item	$x = y \times z$: $\forall t \in x \exists a \in y \exists b \in z (t = (a,b)) \land \forall a \in y \forall b \in z \exists r \in x (r = (a,b))$
+		\item	$x$ is binary relation: $\forall t \in x \exists p \in x \exists y \in p \exists q \in x \exists z \in q (t \in y \times z)$
+		\item	$x$ function: $x$ binary relation and other stuff ..
+		\item	$x$ surjection: $x$ function and other stuff..
+		\item	$x$ bijection: $x$ surjection and $x$ injection
+		\item	$x = dom(y)$: $y$ is function $\land \forall t \in x \exists u \in y \exists z \in u ((t,z) \in y) \land 
+			\forall u \in y \forall z \in u \forall a \in y \forall b \in a \bigg( (b,z) \in y \to \exists t \in x ((b,z) = t) \bigg)$
+		\item	$x = ran(y)$: analogue
+		\item	$x$ $n$-ary relation: analogue
+		\item	$x$ trans: $\forall y \in x \forall z \in y (z \in x)$
+		\item	$x = \emptyset$: $\forall y \in x (y \not = y)$
+		\item	$x \in Ord$: $\forall y \in x \forall z \in y (trans(y) \land trans(z))$
+		\item	$x$ successor ordinal: $x \in Ord \land \exists y \in x \forall z \in x (z \in y \lor z = y)$
+		\item	$x$ limit ordinal: $x \in Ord \land$ not successor
+		\item	Let $n \in \omega$. Let $S$ denote the successor function (whose graph is clearly $Delta_0$. Then $x = n$: $x = S(.. n \ times .. S(\emptyset)..)$.
+		\item	$x = \omega$: $x \in Ord \land x \text{ limit } \land \forall y \in x (y \text{ successor } \lor y = \emptyset)$
+	\end{itemize}
+\end{proof}
+\end{document}
