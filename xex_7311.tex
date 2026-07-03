@@ -26,7 +26,7 @@
 
 	By contradiction, assume that for some $G$ generic we have $M[G] \models \omega_1 > (\omega_1)^M$. This means that there exists in $M[G]$ some $r$ such that $M[G] \models r: \omega_1 ^M \to \omega \text{ injective }$.
 	Let $\dot{r}$ be a name for $r$. Then $[[ \dot{r}: \check{\omega_1 ^M} \to \check{\omega} ]] = b \in G$. 
-	Now consider for every $n \in \omega$ $D_n := \{ q \leq b : M \models \exists n<\omega [[ \dot{r}(\check{n}) = \check{m} ]] \geq q \}$.
+	Now consider for every $n \in \omega$ $D_n := \{ q \leq b : M \models \exists m<\omega [[ \dot{r}(\check{n}) = \check{m} ]] \geq q \}$.
 	We claim that $\forall n<\omega D_n$ is open, dense under $b$. It is obvious that it is open, since it is downward closed by definition.
 	We need to check the density: let $0 < c \leq b$. Let $H$ be generic, with $c \in H$. Then $b \in H$, so that $M[H] \models \dot{r}_H : \check{\omega_1 ^M}_H \to \omega \text{ injection }$.
 	In particular, for some $m < \omega$, it must be $M[H] \models \dot{r}_H (n) = m$. Equivalently $[[ \dot{r} (\check{n}) = \check{m} ]] \in H$. Then $[[ \dot{r} (\check{n}) = \check{m} ]] \wedge c \in H \cap D_n $.
