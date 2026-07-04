@@ -1,0 +1,76 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Let $\phi(x,\vec{z},y) \in L \supseteq \epsilon_{\Delta_0}$ and let $T \supseteq ZF^{-}_{L}$ be $L$-theory.
+	\begin{itemize}
+		\item	Suppose $T \vdash \forall x,\vec{z} \exists ! y \phi(x,\vec{z},y)$ 
+		\item   Suppose $\phi(x,\vec{z},y) \in \Delta_1(T)$
+		\item 	Let $G: Ord \times V \to V$ be the function defined by recursion using $\phi$, that is:
+			\[
+				G(\alpha,\vec{b}) = c \iff \phi(G \restriction (\alpha \times {\vec{b}}), \vec{b}, c)
+			\]
+	       
+		\item	Let $\theta$ be the graph of $G$.
+  
+	\end{itemize}
+	Then $\theta(x,\vec{z},y) \in \Delta_1(T)$. 
+
+\end{exercise}
+
+\begin{proof}
+
+	Basically we will write $\theta(x,\vec{z},y)$ as:
+	\begin{itemize}
+		\item	"there exists a function $w$ such that $(x,\vec{z}) \in dom(w)$ and $w(x,\vec{z}) = y$ and $w$ is the approximation of $G$ at some ordinal $\beta$"
+		\item	"for all functions $w$ such that $(x,\vec{z}) \in dom(w)$ and $w$ is approximation of $G$ at some ordinal $\beta$ we have $w(x,\vec{z}) = y$"
+	\end{itemize}
+
+	More formally we can write the above as:
+
+	\begin{align*}
+		(x,\vec{z},y) \in \theta \iff \exists w \bigg[& w \text{ function } \land (x, \vec{z}) \in dom(w) \land \\
+							& \exists \beta \bigg( \beta \in Ord \land dom(w) = \beta \times \{\vec{z}\} \land \\
+							& \forall \alpha \in \beta \ \phi(w \restriction (\alpha \times \{\vec{z} \} ),\vec{z}, w(\alpha \frown \vec{z}) ) \bigg)\bigg] 
+	\end{align*}
+
+	Now observe that $\forall \alpha \in \beta \ \phi(w \restriction (\alpha \times \{\vec{z} \} ),\alpha, w(\alpha \frown \vec{z}) ) \in \Sigma_1(T)$ since $T \vdash \text{Collection}_L$.
+	So we have that $\theta \in \Sigma_1(T)$.
+
+	\begin{align*}
+		(x,\vec{z},y) \in \theta \iff \forall w \bigg[& \bigg(w \text{ function } \land (x,\vec{z}) \in dom(w) \land \\
+							& \exists \beta \big( \beta \in Ord \land dom(w) = \beta \times \{ \vec{z} \} \land \\
+							& \forall \alpha \in \beta \phi(w \restriction (\alpha \times \vec{z} ), \vec{z}, w(\alpha \frown \vec{z}) ) \big) \bigg) \\
+							& \to  y = w(x, \vec{z}) \bigg]
+	\end{align*}
+
+	Now the right hand side is equivalent to:
+
+	\begin{align*}
+		\forall w \bigg[& w \text{ not a function } \lor (x,\vec{z}) \not \in dom(w) \lor y = w(x,\vec{z}) \lor \\
+				& \forall \beta \bigg( \beta \not \in Ord \lor dom(w) \not = \beta \times \{\vec{z}\} \lor \\
+				& \exists \alpha \in \beta \big( \neg \phi(w \restriction (\alpha \times \{\vec{z}\}), \vec{z}, w(\alpha, \vec{z})) \big) \bigg) \bigg]
+	\end{align*}
+
+
+	This is $\Pi_1(T)$ since $T \vdash \text{ Collection}_L$.
+
+
+\end{proof}
+\end{document}
