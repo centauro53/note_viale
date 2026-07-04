@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Let $(N,E)$ be $\{ \epsilon \}$-structure (that is: $E$ is the interpretation of $\epsilon$ in the structure $N$). Suppose $M \subseteq N$ $E$-transitive. Then:
+	\begin{enumerate}
+		\item	$(M,E \cap N^2) \subseteq (N,E)$
+		\item	$\Delta_0$-formulae are absolute between $M$ and $N$
+		\item	if $M,N \models ZF^{-}_{\Delta_0}$, then $\Delta_1(ZF_{\Delta_0})$-formulae are absolute between $M$ and $N$
+	\end{enumerate}
+
+\end{exercise}
+
+\begin{proof}
+
+	\begin{enumerate}
+		\item The first item follows directly from the definition.
+		\item The last item follows from the fact that a formula in $\Delta_1$ is upward and downward absolute since it can be written as $\Sigma_1$ and $\Pi_1$.
+		\item We prove the second item by induction on the complexity. As an example let's prove that $\psi(y): \forall x \in y \phi(x) $ is absolute, where $\phi(x) \in \Delta_0$.
+			Let $b \in M$. 
+			\begin{itemize}
+				\item	If $N \models \psi(b)$ then for all $a$ such that $N \models a E b$ we have $N \models \phi(a)$.
+					Since $(M, E \cap M^2) \subseteq (N,E)$, we have that for all $a$ such that $M \models a E b$ we have $N \models \phi(a)$.
+					By inductive hypothesis we now get that for all $a$ such that $M \models a E b$ we have $M \models \phi(a)$.
+					Equivalently $M \models \forall x \in b \phi(x)$, that is $M \models \psi(b)$.
+
+				\item	If $M \models \psi(b)$ then for all $a$ such that $M \models a E b$ we have $M \models \phi(a)$.
+					Now take $c \in N$ such that $N \models c E b$. Since $b \in M$ and $M$ transitive, we can say $c \in M$.
+					This means that $M \models \phi(c)$. By inductive hypopthesis we have that $N \models \phi(c)$.
+					Since $c$ is arbitrary we have that $N \models \psi(b)$.
+			\end{itemize}
+
+	\end{enumerate}
+
+\end{proof}
+\end{document}
