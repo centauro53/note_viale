@@ -1,0 +1,53 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Let $(V,\epsilon) \models ZF^{-}$. Let $M$ definable class, $(M,\epsilon) \subseteq (V,\epsilon)$. Let $A \subseteq M, R \subseteq A^2$ definable classes with parameters in $M$. Suppose:
+	\begin{enumerate}
+		\item	$M$ transitive, $M \models ZF^{-}$
+		\item	$R$ absolute
+		\item	$A$ absolute
+		\item	$M \models R \text{ well founded }$, $M \models R \text{ set-like }$
+	\end{enumerate}
+
+	Then the function defined internally in $M$ as $rk_{R}: A \to Ord, b \mapsto \bigcup_{a \in pred_R(b)} S(rk_R(a))$ is absolute.
+
+\end{exercise}
+
+\begin{proof}
+
+	First observe that since $A,R$ are absolute and $M$ is transitive we have that $pred_R$ is absolute.
+	Now take as rule for the induction $\phi(x,y): y = \bigcup \{x(b) +1 : b \in dom(x)\}$ and note that it is $\Delta_1(ZF^{-})$.
+	One can now define 
+	\begin{align*}
+		(x,y) \in rk_R \iff \exists w \bigg[& w \text{ function } \land w(x) = y \land \\
+						&\exists b \bigg( b \in A \land dom(w) = pred_R(b) \land \forall a \in pred_R(b) ( \phi(w \restriction{pred_R(a)}, w(a)) \bigg) \bigg]
+	\end{align*}
+	Note that the above formula is upward absolute since there are only existentials, absolute formulas and bounded quantification (in particular $\forall a \in pred_R(b)$ is a bounded quantification
+	because $M \models R \text{ set-like}$).
+
+	Similarly one can define
+	\begin{align*}
+		(x,y) \in rk_R \iff \forall w \bigg[& \bigg( w \text{ function } \land \\ 
+						& \exists b \big( b \in A \land dom(w) = pred_R(b) \land \forall a \in pred_R(b) ( \phi(w \restriction{pred_R(a)}, w(a)) \big) \bigg) \\
+						& \to w(x) = y \bigg]
+	\end{align*}
+
+\end{proof}
+\end{document}
