@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+	
+	Suppose $(X,\tau)$ T2, compact topological space and let $A \in \tau \setminus \{\emptyset\}$. Then there exists $B \in \tau \setminus \{\emptyset\}$ such that $CL(B) \subseteq A$.
+
+\end{exercise}
+
+\begin{proof}
+
+	Let $a \in A$. Consider $\{(U_x,V_x) : x \in A^c \} \subseteq \tau \times \tau$ such that $x \in U_x, a \in V_x, U_x \cap V_x = \emptyset$.
+	Such a family exists because $(X,\tau)$ is T2. Now, since $A^c$ is closed in a compact space we have that $A^c$ is compact with the induced topology.
+	Since $\{U_x : x \in A^c\}$ cover $A^c$ we can extract a finite covering $\{U_i : i = 1,..,n\}$.
+	So we have that $a \in \bigcap_{i=1,..,n} V_i \subseteq \bigcap_{i = 1,..,n} U_i^c \subseteq A$.
+	Since $\bigcap_{i=1,..,n} U_i^c$ is closed we conclude that $B:=\bigcap_{i=1,..,n} V_i$ is the set we were looking for, since:
+	\begin{itemize}
+		\item	it is non empty ($a \in B$)
+		\item	it is open
+		\item	$CL(B) \subseteq \bigcap_{i=1,..,n} U_i^c \subseteq A$
+	\end{itemize}
+
+\end{proof} 
+\end{document}
