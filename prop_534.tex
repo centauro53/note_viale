@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	For every set $X$, $Fn(X,2)$ has the CCC.
+
+\end{exercise}
+
+\begin{proof}
+
+	Let $k= |X|$. Then equivalently we prove that $Fn(k,2)$ has the CCC.
+	If $k \leq \omega$ then $|Fn(k,2)| \leq \omega$ so it holds the same for any antichain.
+	So wlog we can suppose $k > \omega$.
+	By contradiction, let $A:=\{s_{\alpha} : \alpha < \omega_1\}$ antichain.
+	Let's group the elements based on the cardinality, that is consider:
+	$\forall n<\omega A_n := \{s \in A : |s|= n\}$.
+	Since $\omega_1$ is regular, let $n<\omega$ be such that $|A_n| = \omega_1$.
+	Now, any element $s \in A_n$ can be identified with the unique couple in $k^n \times 2^n$ given by $(\langle dom(s) \rangle, \langle ran(s) \rangle)$ 
+	where $\langle dom(s) \rangle$ is the enumeration of $dom(s)$ increasing according to the order given by $k$ and $\langle ran(s) \rangle$ is the enumeration of $ran(s)$ as pointwise image of $\langle dom(s) \rangle$.
+	To make an example, if $s = \{ (0,1), (\omega_2,1), (\omega,0) \}$ we we'll get $((0,\omega,\omega_2),(1,0,1))$.
+	For every $t \in 2^n$, let $D_t := \{p \in k^n: (p,t) \text{ identifies some element of }A_n\}$.
+	Now, since $|A_n| = \omega_1$ and $2^n < \omega$, we have that for some $t \in 2^n$, $|D_t| = \omega_1$.
+	Since $\omega_1$ is regular, using the $\Delta$-system lemma we can find a root, $r$, for $D_t$.
+	Take $s_1, s_2$ whose range, once identified is $t$. Then $dom(s_1) \cap dom(s_2) = r$.
+	Since they are incompatible they must do something different in $r$.
+	The possibilities however are at most $2^{|r|} < \omega$, which contradicts $|D_t| = \omega_1$.
+
+\end{proof}
+\end{document}
