@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Let $L$ fol, $M$ $B$-valued model, $B$ a well behaved b.a. and $\forall \phi \in L(M) \ D_{\phi} := \{ G \in St(B) : M/G \models \phi \}$.
+	It is not in general true that $D_{\phi}$ dense in $N_b$ implies $b \leq [[ \phi ]]$.
+
+\end{exercise}
+
+\begin{proof}
+
+	Consider $L = \{E\}$, $M = \omega$, $B = RO(2^{\omega \times \omega})$ and put $[[ m = n ]] = 1$ if $m = n$ and $0$ otherwise. Put $[[ E(m,n) ]] := U_{m,n}$ where 
+	$U_{m,n} = \{f \in 2^{\omega \times \omega}: f(m,n) = 1\}$.
+	One can check that is is a well behaved $B$-valued model.
+	Now consider $\phi : \exists x \forall y (x \not = y \to E(x,y))$.
+	\begin{itemize}
+		\item	$[[ \phi ]] = 0$: in fact $[[ \phi ]] = \bigvee_{n < \omega} \bigwedge_{m \not = n} [[ E(m,n) ]] $.
+			Now observe that for all $n<\omega$ we have $\bigwedge_{m \not = n} [[E(m,n)]] = Reg(\{f \in 2^{\omega \times \omega}: \forall m \not = n \ f(m,n) = 1\})$.
+			Since $\{f \in 2^{\omega \times \omega}: \forall m \not = n \ f(m,n) = 1\}$ is closed and has empty interior we get
+			 $\bigwedge_{m \not = n} [[E(m,n)]] = 0$.
+
+		 \item	$D_{\phi}$ dense in $N_{RO(2^{\omega \times \omega})} = St(B)$: in fact an open set in $St(2^{\omega \times \omega})$ must have as a subset an element of the form $N_A$ 
+			 for some $A \in RO(2^{\omega \times \omega})$. Now, since in particular $A$ is open subset of $2^{\omega \times \omega}$, there must be $U_{n,m} \subseteq A$.
+			 Then it's enough showing $D_{\phi} \cap N_{U_{n,m}} \not = \emptyset$.
+			 So we must find $G \in St(B)$ such that $U_{n,m} \in G$ and such that $M/G \models \phi$.
+			 Now $M/G \models \phi$ means that there is some $r < \omega$ such that for all $s \not = r$ we have $[[ E(s,r) ]] \in G$ (that is $U_{s,r} \in G$).
+			 Consider $\{U_{n,s}: n \not = s\}$. This is a prefilter, so extends to an ultrafilter. That is the ultrafilter we were looking for. 
+	\end{itemize}
+
+\end{proof}
+\end{document}
