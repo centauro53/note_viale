@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Suppose $B$ b.a. and $M$ $B$-valued model. Then $\forall \phi(x) \in L \forall \sigma,\tau \in M ([[ \sigma = \tau ]] \land [[ \phi(\sigma) ]] \leq [[ \phi(\tau) ]] )$.
+
+\end{exercise}
+
+\begin{proof}
+
+	\begin{itemize}
+		\item	$\phi$ atomic: directly from definition
+		\item	$\phi: \psi \land \theta$: 
+			$[[ \sigma = \tau ]] \land [[ \psi(\sigma) ]] \land [[ \theta(\sigma) ]] \leq
+			([[ \sigma = \tau ]] \land [[ \psi(\sigma) ]]) \land ([[ \sigma = \tau ]] \land [[ \theta(\sigma) ]]) \leq [[ \phi(\tau) ]]$
+		\item	$\phi : \neg \psi$:
+			$[[ \psi(\tau) ]] = ( [[\tau = \sigma ]] \land [[ \psi(\tau) ]]) \lor ( \neg [[ \tau = \sigma ]] \land [[ \psi(\tau) ]]) \leq
+			[[ \psi(\sigma) ]] \lor ( \neg [[ \tau = \sigma ]] \land [[ \psi(\tau) ]]) \leq [[ \psi(\sigma) ]] \lor \neg [[ \tau = \sigma ]]$
+		\item	$\phi: \exists x \psi(x,y)$: 
+			$[[ \sigma = \tau ]] \land [[ \exists x \phi(x,\sigma) ]] = [[ \sigma = \tau ]] \land \bigvee_{\eta \in M} [[ \psi(\eta, \theta) ]] =
+			\bigvee_{\eta \in M} [[ \sigma = \tau ]] \land [[ \psi(\eta, \sigma) ]] \leq \bigvee_{\eta \in M} [[ \psi(\eta, \tau) ]] = [[ \exists x \phi(x, \tau) ]]$.
+	\end{itemize}
+\end{proof}
+\end{document}
