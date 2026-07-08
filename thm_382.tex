@@ -1,0 +1,53 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Suppose $B$ b.a. and denote $\tau$ the topology of $St(B)$. Consider
+	\begin{itemize}
+		\item	$I: \tau \to \{\text{ideals of }B\}, Z \mapsto \{b \in B : N_b \subseteq Z\} $ and $X: \{\text{ideals of }B \} \to \tau, I \mapsto \bigcup\{N_b : b \in I\}$.
+			Then $I,X$ are one the inverse of the others, so there is a correspondence between open subsets of $St(B)$ and ideals of $B$.
+			Furthermore $U \subseteq St(B)$ is open if and only if $X(I(U)) = U$.
+
+		\item	$F: \tau \to \{\text{filters of }B\}, Z \mapsto \{b \in B : N_b \supseteq Z\}$ and 
+			$X: \{\text{filters of }B\} \to \{\text{ closed subsets of St(B) }\}, F \mapsto \bigcap\{N_b : b \in F\}$.
+			Then $F,X$ are one the inverse of the other, so there is a correspondence between closed subsets of $St(B)$ and filters of $B$.
+			Furthermore $C \subseteq St(B)$ is closed if and only if $X(F(C)) = C$.
+
+	\end{itemize}
+
+\end{exercise}
+
+\begin{proof}
+
+	\begin{itemize}
+		\item	Let $Z \subseteq St(B)$. Then $X(I(Z)) = X( \{b \in B : N_b \subseteq Z\} ) = \bigcup\{ N_b : N_b \subseteq Z\} = Z$, where the last inequality holds because $Z$ is open.
+			Let $J$ ideal of $B$. Then $I(X(J)) = I( \bigcup\{N_b : b \in J\}) = \{c \in B : N_c \subseteq \bigcup\{N_b : b \in J\}\}$.
+			Then it is clear that $I(X(J)) \supseteq J$. For the converse, let $c \in I(X(J))$. Then $N_c \subseteq \bigcup\{N_b : b \in J\}$.
+			Since we know $St(B)$ is compact and $N_c$ is closed, we have $N_c$ compact, so we can extract a finite covering: $N_c \subseteq \bigcup_{i=1,..,k} N_{b_i} = N_{\bigvee_{i=1,..,k} b_i}$.
+			So we deduce $c \leq \bigvee_{i=1,..,k} b_i \in J$ and since $J$ ideal we have $c \in J$ as well.
+			This way we have incidentally proved that if $U \subseteq St(B)$ is open then $X(I(U)) = U$.
+			For the converse observe that $X(I(U))$ is union of open subsets of $St(B)$.
+
+
+		\item	Pretty much the same.
+
+	\end{itemize}
+
+\end{proof}
+\end{document}
