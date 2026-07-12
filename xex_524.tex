@@ -1,0 +1,37 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+
+\geometry{margin=2.5cm}
+
+\newenvironment{exercise}
+  {\par\vspace{1em}\noindent\textbf{Esercizio.} }
+  {\par\vspace{1em}}
+
+\newenvironment{proof}
+  {\par\vspace{0.5em}\noindent\textit{Dimostrazione.} }
+  {\par\vspace{1em}\hfill$\square$}
+
+
+\begin{document}
+
+\begin{exercise}
+
+	Consider $\pi : RO(2^{ < \omega}) \to RO(2^{\omega}), A \mapsto \bigcup_{q \in A} N_q$. Then $\pi$ è isomorphism.
+
+\end{exercise}
+
+\begin{proof}
+
+	Consider $k: 2^{< \omega} \to RO(2^{\omega}), s \mapsto N_s$ and $j: 2^{< \omega} \to RO(2^{< \omega}), s \mapsto Reg(\downarrow s)$.
+	If we prove that $k$ is completion map (i.e. order and incompatibility preserving with dense image) then we'll have that $k = \pi \circ j$ and $\pi$ isomorphism.
+	\begin{itemize}
+		\item	dense image: this is because $\{N_s : s \in 2^{< \omega}\}$ is a basis for $2^{\omega}$.
+		\item	order preserving: $s \leq t \Rightarrow s \supseteq t \Rightarrow N_s \subseteq N_t \Rightarrow k(s) \leq k(t)$.
+		\item	incompatibility preserving: $s \perp t \iff N_s \cap N_t = \emptyset$ is clear.
+	\end{itemize}
+
+\end{proof}
+\end{document}
